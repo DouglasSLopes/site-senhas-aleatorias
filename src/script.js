@@ -36,7 +36,10 @@ document.getElementById("gerar").addEventListener("click", () => {
     for (let i = 0; i < qtdSimbolos; i++) senha += pegarAleatorio(simbolos);
 
     // embaralha
-    senha = senha.split("").sort(() => Math.random() - 0.5).join("");
+    senha = senha
+      .split("")
+      .sort(() => Math.random() - 0.5)
+      .join("");
     senhasGeradas.push(senha);
 
     // adiciona ao histórico
