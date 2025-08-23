@@ -1,3 +1,14 @@
+// Vetor com senhas já existentes no histórico
+let senhasGeradas = ["Exemplo123!", "Senha@456", "Teste#789"];
+
+const listaHistorico = document.getElementById("lista-historico");
+senhasGeradas.forEach((senha) => {
+  const li = document.createElement("li");
+  li.textContent = senha;
+  listaHistorico.prepend(li);
+});
+
+// Evento de gerar novas senhas
 document.getElementById("gerar").addEventListener("click", () => {
   const total = parseInt(document.getElementById("total").value);
   const qtdLetras = parseInt(document.getElementById("letras").value);
@@ -22,11 +33,9 @@ document.getElementById("gerar").addEventListener("click", () => {
 
   const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numeros = "0123456789";
-  const simbolos = "!@#$%^&*()-_=+[]{};:,.<>?/";
+  const simbolos = "!@#$%^&*()-_=+[]{};:,.<>/";
 
   const pegarAleatorio = (str) => str[Math.floor(Math.random() * str.length)];
-
-  let senhasGeradas = [];
 
   for (let q = 0; q < quantidade; q++) {
     let senha = "";
@@ -45,9 +54,11 @@ document.getElementById("gerar").addEventListener("click", () => {
     // adiciona ao histórico
     const li = document.createElement("li");
     li.textContent = senha;
-    document.getElementById("lista-historico").prepend(li);
+    listaHistorico.prepend(li);
   }
 
   // Mostra todas juntas
-  document.getElementById("senha").textContent = senhasGeradas.join(" | ");
+  document.getElementById("senha").textContent = senhasGeradas
+    .slice(-quantidade)
+    .join(" | ");
 });
