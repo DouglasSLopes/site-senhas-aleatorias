@@ -1,5 +1,5 @@
 // Vetor com senhas já existentes no histórico
-let senhasGeradas = ["Exemplo123!", "Senha@456", "Teste#789"];
+// let senhasGeradas = ["Exemplo123!", "Senha@456", "Teste#789"];
 
 const listaHistorico = document.getElementById("lista-historico");
 senhasGeradas.forEach((senha) => {
@@ -44,14 +44,14 @@ document.getElementById("gerar").addEventListener("click", () => {
     for (let i = 0; i < qtdNumeros; i++) senha += pegarAleatorio(numeros);
     for (let i = 0; i < qtdSimbolos; i++) senha += pegarAleatorio(simbolos);
 
-    // embaralha
+    // Embaralha
     senha = senha
       .split("")
       .sort(() => Math.random() - 0.5)
       .join("");
     senhasGeradas.push(senha);
 
-    // adiciona ao histórico
+    // Adiciona ao histórico
     const li = document.createElement("li");
     li.textContent = senha;
     listaHistorico.prepend(li);
